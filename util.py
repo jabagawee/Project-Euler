@@ -26,6 +26,10 @@ def prime_factorize(n):
                 break
     return factors
 
+def proper_divisors(n):
+    return [x for x in xrange(1, n) if n % x == 0]
+
+
 import functools
 
 class memoize(object):
