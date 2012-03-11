@@ -1,7 +1,4 @@
-from util import proper_divisors
-
-def d(n):
-    return sum(proper_divisors(n))
+from util import d
 
 ans = 0
 

@@ -29,6 +29,9 @@ def prime_factorize(n):
 def proper_divisors(n):
     return [x for x in xrange(1, n) if n % x == 0]
 
+def d(n):
+    return sum(proper_divisors(n))
+
 
 import functools
 
