@@ -55,4 +55,4 @@ def product(seq):
     return reduce(lambda a, b: a * b, seq)
 
 def factorial(n):
-    return product(xrange(n + 1))
+    return product(xrange(1, n + 1))
