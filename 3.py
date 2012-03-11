@@ -8,4 +8,11 @@ def is_prime(n):
             return False
     return True
 
-print is_prime(600851475149)
+num = 600851475143
+while not is_prime(num):
+    for x in xrange(2, num):
+        if num % x == 0:
+            num /= x
+            break
+
+print num
