@@ -50,3 +50,9 @@ class memoize(object):
    def __get__(self, obj, objtype):
       """Support instance methods."""
       return functools.partial(self.__call__, obj)
+
+def product(seq):
+    return reduce(lambda a, b: a * b, seq)
+
+def factorial(n):
+    return product(xrange(n + 1))
