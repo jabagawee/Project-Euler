@@ -5,14 +5,14 @@ def fib():
         a, b = b, a + b
 
 def even(seq):
-    for num in seq:
-        if num % 2 == 0:
-            yield num
+    for n in seq:
+        if n % 2 == 0:
+            yield n
 
-def stop_at_n(seq, n):
-    for num in seq:
-        if num > n:
+def stop_at_n(seq, limit):
+    for n in seq:
+        if n > limit:
             break
-        yield num
+        yield n
 
 print sum(even(stop_at_n(fib(), 4000000)))
