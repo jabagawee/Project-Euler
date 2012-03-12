@@ -12,6 +12,12 @@ def is_prime(n):
             return False
     return True
 
+def product(seq):
+    return reduce(lambda a, b: a * b, seq)
+
+def factorial(n):
+    return product(xrange(1, n + 1))
+
 from collections import Counter
 
 def prime_factorize(n):
@@ -27,7 +33,21 @@ def prime_factorize(n):
     return factors
 
 def proper_divisors(n):
-    return [x for x in xrange(1, n) if n % x == 0]
+    factors = [(prime, multiplicity) for prime, multiplicity in prime_factorize(n).iteritems()]
+    f = [0] * len(factors)
+    while True:
+        yield reduce(lambda a, b: a * b, [factors[x][0]**f[x] for x in xrange(len(factors))], 1)
+        i = 0
+        while True:
+            f[i] += 1
+            if f == [factor[1] for factor in factors]:
+                return
+            if f[i] <= factors[i][1]:
+                break
+            f[i] = 0
+            i += 1
+            if i == len(factors):
+                return
 
 def d(n):
     return sum(proper_divisors(n))
@@ -57,9 +77,3 @@ class memoize(object):
    def __get__(self, obj, objtype):
       """Support instance methods."""
       return functools.partial(self.__call__, obj)
-
-def product(seq):
-    return reduce(lambda a, b: a * b, seq)
-
-def factorial(n):
-    return product(xrange(1, n + 1))
