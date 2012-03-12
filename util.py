@@ -16,7 +16,10 @@ def product(seq):
     return reduce(lambda a, b: a * b, seq)
 
 def factorial(n):
-    return product(xrange(1, n + 1))
+    return product(xrange(1, n + 1)) if n > 1 else 1
+
+def combination(n, r):
+    return factorial(n)/factorial(r)/factorial(n-r)
 
 from collections import Counter
 
