@@ -77,3 +77,9 @@ class memoize(object):
    def __get__(self, obj, objtype):
       """Support instance methods."""
       return functools.partial(self.__call__, obj)
+
+def fib_gen():
+    a, b = 0, 1
+    while True:
+        yield a
+        a, b = b, a + b

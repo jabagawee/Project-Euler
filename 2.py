@@ -1,8 +1,4 @@
-def fib():
-    a, b = 0, 1
-    while True:
-        yield a
-        a, b = b, a + b
+from util import fib_gen
 
 def even(seq):
     for n in seq:
@@ -15,4 +11,4 @@ def stop_at_n(seq, limit):
             break
         yield n
 
-print sum(even(stop_at_n(fib(), 4000000)))
+print sum(even(stop_at_n(fib_gen(), 4000000)))
