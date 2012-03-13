@@ -7,4 +7,4 @@ for filler in fillers:
     for x in xrange(filler, target + 1):
         ways[x] += ways[x - filler]
 
-print ways[target]
+print ways[target - 1]
