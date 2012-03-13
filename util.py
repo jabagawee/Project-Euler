@@ -86,3 +86,9 @@ def fib_gen():
     while True:
         yield a
         a, b = b, a + b
+
+def gcd(a, b):
+    return a if b == 0 else gcd(b, a % b)
+
+def phi(n):
+    return len([x for x in xrange(1, n) if gcd(x, n) == 1])
