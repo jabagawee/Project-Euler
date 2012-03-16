@@ -55,6 +55,9 @@ def proper_divisors(n):
 def d(n):
     return sum(proper_divisors(n))
 
+def sigma_2(n):
+    return n**2 + sum(map(lambda x: x**2, proper_divisors(n)))
+
 
 import functools
 
@@ -92,3 +95,16 @@ def gcd(a, b):
 
 def phi(n):
     return len([x for x in xrange(1, n) if gcd(x, n) == 1])
+
+from util import combination
+import numpy
+
+def primesfrom2to(n):
+    sieve = numpy.ones(n / 3 + (n % 6 == 2), dtype=numpy.bool)
+    sieve[0] = False
+    for i in xrange(int(n**0.5) / 3 + 1):
+        if sieve[i]:
+            k = 3 * i + 1 | 1
+            sieve [((k * k) / 3) :: 2 * k] = False
+            sieve[(k * k + 4 * k - 2 * k * (i & 1)) / 3 :: 2 * k] = False
+    return numpy.r_[2, 3, ((3 * numpy.nonzero(sieve)[0] + 1) | 1)]
