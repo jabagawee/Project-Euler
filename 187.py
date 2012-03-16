@@ -1,24 +1,14 @@
-from math import sqrt
+from util import combination
+import numpy
 
-limit = 10**8
-A = [False] * limit
+def primesfrom2to(n):
+    sieve = numpy.ones(n / 3 + (n % 6 == 2), dtype=numpy.bool)
+    sieve[0] = False
+    for i in xrange(int(n**0.5) / 3 + 1):
+        if sieve[i]:
+            k = 3 * i + 1 | 1
+            sieve [((k * k) / 3) :: 2 * k] = False
+            sieve[(k * k + 4 * k - 2 * k * (i & 1)) / 3 :: 2 * k] = False
+    return numpy.r_[2, 3, ((3 * numpy.nonzero(sieve)[0] + 1) | 1)]
 
-for x in xrange(1, int(sqrt(limit))+1):
-    for y in xrange(1, int(sqrt(limit))+1):
-        n = 4 * x**2 + y**2
-        if n < limit and (n % 12 in (1, 5)):
-            A[n] = not A[n]
-        n = 3 * x**2 + y**2
-        if n < limit and n % 12 == 7:
-            A[n] = not A[n]
-        n = 3 * x**2 - y**2
-        if x > y and n < limit and n % 12 == 11:
-            A[n] = not A[n]
-
-for n in xrange(5, int(sqrt(limit))+1):
-    if A[n]:
-        for k in xrange(n**2, limit, n**2):
-            A[k] = False
-
-A[2], A[3] = True, True
-print len([x for x in xrange(limit) if A[x]])
+primes = list(primesfrom2to(10**8))
