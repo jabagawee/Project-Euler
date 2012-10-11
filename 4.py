@@ -1,9 +1,12 @@
-mp = 0 # max palindrome
+#! /usr/bin/env python
 
-for x in xrange(900, 999+1):
-    for y in xrange(900, 999+1):
-        a = x * y
-        if str(a) == str(a)[::-1] and a > mp:
-            mp = a
+if __name__ == "__main__":
+    max_palindrome = 0
 
-print mp
+    for x in xrange(900, 999 + 1):
+        for y in xrange(900, 999 + 1):
+            xy = x * y
+            if str(xy) == str(xy)[::-1] and xy > max_palindrome:
+                max_palindrome = xy
+
+    print max_palindrome

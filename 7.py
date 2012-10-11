@@ -1,12 +1,13 @@
-from util import is_prime
+#! /usr/bin/env python
 
-counter, n = 0, 0
+from util import prime_generator
 
-while True:
-    n += 1
-    if is_prime(n):
+if __name__ == "__main__":
+    counter = 0
+    gen = prime_generator()
+    while True:
+        prime = gen.next()
         counter += 1
         if counter == 10001:
+            print prime
             break
-
-print n

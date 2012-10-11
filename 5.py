@@ -1,10 +1,6 @@
-from collections import Counter
-from util import prime_factorize
+#! /usr/bin/env python
 
-final_factors = Counter()
-for x in xrange(2, 20+1):
-    factors = prime_factorize(x)
-    for factor in factors:
-        final_factors[factor] = max(final_factors[factor], factors[factor])
+from util import lcm
 
-print reduce(lambda a, b: a * b, [x**y for x,y in final_factors.iteritems()])
+if __name__ == "__main__":
+    print reduce(lcm, xrange(1, 20 + 1))
