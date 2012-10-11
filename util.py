@@ -81,7 +81,7 @@ def d(n):
 
 
 def sigma_2(n):
-    return n ** 2 + sum(map(lambda x: x ** 2, proper_divisors(n)))
+    return n ** 2 + sum(x ** 2 for x in proper_divisors(n))
 
 
 class memoize(object):
