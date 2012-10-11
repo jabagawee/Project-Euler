@@ -10,6 +10,7 @@ def main():
                 key *= len(f)/len(key) + 1
                 plaintext = ''.join(map(chr,[x ^ y for x, y in izip(f, key)]))
                 if ' the ' in plaintext:
+                    print plaintext
                     print sum([ord(x) for x in plaintext])
                     return
 
