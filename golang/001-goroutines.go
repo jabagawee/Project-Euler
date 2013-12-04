@@ -62,7 +62,7 @@ func limitChannel(in chan int, limit int) (out chan int) {
 }
 
 func main() {
-	ans := 0
+    var ans int
 	three, five := makeMultipleChannel(3), makeMultipleChannel(5)
 	merged := mergeOrderedIntChannels(three, five)
 	limited := limitChannel(merged, 1000)
