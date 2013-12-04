@@ -46,26 +46,11 @@ func mergeOrderedIntChannels(ch1, ch2 chan int) (out chan int) {
 	return
 }
 
-func limitChannel(in chan int, limit int) (out chan int) {
-	out = make(chan int)
-	go func() {
-		for {
-			v := <-in
-			if v >= limit {
-				close(out)
-				break
-			}
-			out <- v
-		}
-	}()
-	return
-}
-
 func main() {
-    var ans int
+	var ans int
 	three, five := makeMultipleChannel(3), makeMultipleChannel(5)
 	merged := mergeOrderedIntChannels(three, five)
-	limited := limitChannel(merged, 1000)
+	limited := limitIntChannel(merged, 1000)
 	for value := range limited {
 		ans += value
 	}
