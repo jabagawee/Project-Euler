@@ -12,7 +12,7 @@ func main() {
 	var ans int
 	fib := euler.MakeFibonacciChannel()
 	evenFib := euler.FilterIntChannel(isEven, fib)
-	evenSmallFib := euler.LimitIntChannel(evenFib, 4000000+1)
+	evenSmallFib := euler.CapIntChannel(evenFib, 4000000+1)
 	for i := range evenSmallFib {
 		ans += i
 	}

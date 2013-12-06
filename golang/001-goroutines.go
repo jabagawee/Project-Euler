@@ -52,7 +52,7 @@ func main() {
 	var ans int
 	three, five := makeMultipleChannel(3), makeMultipleChannel(5)
 	merged := mergeOrderedIntChannels(three, five)
-	limited := euler.LimitIntChannel(merged, 1000)
+	limited := euler.CapIntChannel(merged, 1000)
 	for value := range limited {
 		ans += value
 	}

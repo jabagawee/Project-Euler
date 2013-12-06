@@ -12,7 +12,7 @@ func FilterIntChannel(predicate func(int) bool, in chan int) (out chan int) {
 	return
 }
 
-func LimitIntChannel(in chan int, limit int) (out chan int) {
+func CapIntChannel(in chan int, limit int) (out chan int) {
 	out = make(chan int)
 	go func() {
 		for {
