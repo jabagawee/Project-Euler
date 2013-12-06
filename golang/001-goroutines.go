@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-import "./util"
+import "./euler"
 
 func makeMultipleChannel(n int) (ch chan int) {
 	ch = make(chan int)
@@ -52,7 +52,7 @@ func main() {
 	var ans int
 	three, five := makeMultipleChannel(3), makeMultipleChannel(5)
 	merged := mergeOrderedIntChannels(three, five)
-	limited := util.LimitIntChannel(merged, 1000)
+	limited := euler.LimitIntChannel(merged, 1000)
 	for value := range limited {
 		ans += value
 	}

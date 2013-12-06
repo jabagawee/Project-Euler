@@ -28,13 +28,13 @@ func LimitIntChannel(in chan int, limit int) (out chan int) {
 }
 
 func MakeCounter(start, incr int) (ch chan int) {
-    ch = make(chan int)
-    go func() {
-        for i := start; ; i += incr {
-            ch <- i
-        }
-    }()
-    return
+	ch = make(chan int)
+	go func() {
+		for i := start; ; i += incr {
+			ch <- i
+		}
+	}()
+	return
 }
 
 func MakeFibonacciChannel() (ch chan int) {
@@ -45,20 +45,4 @@ func MakeFibonacciChannel() (ch chan int) {
 		}
 	}()
 	return
-}
-
-func MakePrimeChannel() (out chan int) {
-    out = make(chan int, 1)
-    out <- 2
-
-    primes := MakeCounter(3, 2)
-    go func() {
-        for {
-            prime := <-primes
-            out <- prime
-            predicate := func (n int) bool {return n%prime != 0}
-            primes = FilterIntChannel(predicate, primes)
-        }
-    }()
-    return
 }
