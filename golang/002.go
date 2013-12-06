@@ -10,7 +10,7 @@ func isEven(n int) bool {
 
 func main() {
 	var ans int
-	fib := euler.MakeFibonacciChannel()
+	fib := euler.Fibonaccis()
 	evenFib := euler.FilterIntChannel(isEven, fib)
 	evenSmallFib := euler.CapIntChannel(evenFib, 4000000+1)
 	for i := range evenSmallFib {

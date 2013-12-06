@@ -27,17 +27,7 @@ func CapIntChannel(in chan int, limit int) (out chan int) {
 	return
 }
 
-func MakeCounter(start, incr int) (ch chan int) {
-	ch = make(chan int)
-	go func() {
-		for i := start; ; i += incr {
-			ch <- i
-		}
-	}()
-	return
-}
-
-func MakeFibonacciChannel() (ch chan int) {
+func Fibonaccis() (ch chan int) {
 	ch = make(chan int)
 	go func() {
 		for i, j := 0, 1; ; i, j = i+j, i {

@@ -123,9 +123,7 @@ func sendproxy(out chan<- int) chan<- int {
     return proxy
 }
 
-
-// Return a chan int of primes.
-func MakePrimeChannel() chan int {
+func Primes() chan int {
     // The output values.
     out := make(chan int, 1024)
     out <- 2
@@ -196,7 +194,7 @@ func MakePrimeChannel() chan int {
 }
 
 func IsPrime(n int) bool {
-    primes := MakePrimeChannel()
+    primes := Primes()
     for prime := range primes {
         if prime == n || prime * prime > n {
             return true
