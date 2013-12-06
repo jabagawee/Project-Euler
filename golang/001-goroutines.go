@@ -2,6 +2,8 @@ package main
 
 import "fmt"
 
+import "./util"
+
 func makeMultipleChannel(n int) (ch chan int) {
 	ch = make(chan int)
 	go func() {
@@ -50,7 +52,7 @@ func main() {
 	var ans int
 	three, five := makeMultipleChannel(3), makeMultipleChannel(5)
 	merged := mergeOrderedIntChannels(three, five)
-	limited := limitIntChannel(merged, 1000)
+	limited := util.LimitIntChannel(merged, 1000)
 	for value := range limited {
 		ans += value
 	}
