@@ -204,3 +204,20 @@ func IsPrime(n int) bool {
     }
     return false  // should never be reached
 }
+
+func PrimeFactorize(n int) map[int]int {
+    m := make(map[int]int)
+    if n == 1 {
+        m[1] = 1
+    }
+    for n != 1 {
+        for divisor := 2; divisor <= n; divisor++ {
+            if n%divisor == 0 {
+                n /= divisor
+                m[divisor] += 1
+                break
+            }
+        }
+    }
+    return m
+}
