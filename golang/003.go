@@ -4,14 +4,16 @@ import "fmt"
 
 import "./euler"
 
-// NUM := 600851475143
-var NUM int = 1e7
-
 func main() {
-	var ans int
-	primes := euler.LimitIntChannel(euler.MakePrimeChannel(), NUM+1)
-	for potentialPrimeFactor := range primes {
-		ans = potentialPrimeFactor
-	}
-	fmt.Println(ans)
+    num := 600851475143
+    for !euler.IsPrime(num) {
+        primes := euler.MakePrimeChannel()
+        for prime := range primes {
+            if num%prime == 0 {
+                num /= prime
+                break
+            }
+        }
+    }
+	fmt.Println(num)
 }
