@@ -1,7 +1,7 @@
 package euler
 
 func FilterIntChannel(predicate func(int) bool, in chan int) chan int {
-    out := make(chan int)
+	out := make(chan int)
 	go func() {
 		for {
 			if v := <-in; predicate(v) {
@@ -13,7 +13,7 @@ func FilterIntChannel(predicate func(int) bool, in chan int) chan int {
 }
 
 func CapIntChannel(in chan int, limit int) chan int {
-    out := make(chan int)
+	out := make(chan int)
 	go func() {
 		for {
 			v := <-in
@@ -28,7 +28,7 @@ func CapIntChannel(in chan int, limit int) chan int {
 }
 
 func Fibonaccis() chan int {
-    ch := make(chan int)
+	ch := make(chan int)
 	go func() {
 		for i, j := 0, 1; ; i, j = i+j, i {
 			ch <- i
@@ -38,13 +38,13 @@ func Fibonaccis() chan int {
 }
 
 func Triangles() chan int {
-    ch := make(chan int)
-    go func() {
-        n := 0
-        for i := 1; ; i++ {
-            n += i
-            ch <- n
-        }
-    }()
-    return ch
+	ch := make(chan int)
+	go func() {
+		n := 0
+		for i := 1; ; i++ {
+			n += i
+			ch <- n
+		}
+	}()
+	return ch
 }

@@ -106,11 +106,11 @@ var nums = `37107287533902102798797998220837590246510135740250
 53503534226472524250874054075591789781264330331690`
 
 func main() {
-    ans := new(big.Int)
-    for _, num := range strings.Split(nums, "\n") {
-        i := new(big.Int)
-        i.SetString(num, 10)
-        ans.Add(ans, i)
-    }
-    fmt.Println(ans.String()[:10])
+	ans := new(big.Int)
+	for _, num := range strings.Split(nums, "\n") {
+		i := new(big.Int)
+		i.SetString(num, 10)
+		ans.Add(ans, i)
+	}
+	fmt.Println(ans.String()[:10])
 }
