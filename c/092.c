@@ -3,11 +3,10 @@
 
 int sum_square_digits(int num) {
     int ret = 0;
-    do {
-        int digit = num % 10;
-        ret += digit * digit;
+    while (num > 0) {
+        ret += (num%10) * (num%10);
         num /= 10;
-    } while (num > 0);
+    }
     return ret;
 }
 
