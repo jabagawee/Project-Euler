@@ -22,8 +22,7 @@ func main() {
         for cache[temp] == 0 {
             temp = sum_square_digits(temp)
         }
-        cache[i] = cache[temp]
-        if cache[i] == 89 {
+        if cache[i] = cache[temp]; cache[i] == 89 {
             ans++
         }
     }
